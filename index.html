@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Your page title here :)</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+  <script src="js/temperature.js" type="text/javascript"></script>
+  <script src="js/gauge.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div>
+      <br><br>
+      <div>
+        <h4>iGrill Thermostat</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div >
+      <div style="text-align: center;">Probe 1</div>
+      <div><canvas id="g1" class="mycenter" style="margin-right: auto; margin-left: auto; display:block, width: 200px; height: 200px;"></canvas></div>
+    </div>
+
+    <div >
+      <div style="text-align: center;">Probe 2</div>
+      <div><canvas id="g2" class="mycenter" style="margin-right: auto; margin-left: auto; display:block, width: 200px; height: 200px;"></canvas></div>
+    </div>
+
+    <div >
+      <div style="text-align: center;">Probe 3</div>
+      <div><canvas id="g3" class="mycenter" style="margin-right: auto; margin-left: auto; display:block, width: 200px; height: 200px;"></canvas></div>
+    </div>
+
+    <div >s
+      <div style="text-align: center;">Probe 4</div>
+      <div><canvas id="g4" class="mycenter" style="margin-right: auto; margin-left: auto; display:block, width: 200px; height: 200px;"></canvas></div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
