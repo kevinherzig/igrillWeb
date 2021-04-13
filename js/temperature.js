@@ -1,12 +1,13 @@
-// const client = new Paho.MQTT.Client("ws://iot.eclipse.org/ws", "myClientId" + new Date().getTime());
-
 const client = new Paho.MQTT.Client("ws://broker.hivemq.com:8000/mqtt", "myClientId" + new Date().getTime());
 
-// Replace the id here with your bluetooth address!
-const myTopic = "iGrillMon/00:00:00:00:00:00"
+// const myTopic = "iGrillMon/D4:81:CA:22:AB:97"
+
+
+
 const messageTTLSeconds = 10
 const imageSize = 200
 var messageTTL = messageTTLSeconds
+var MyTopic = ""
 
 connectingImage = new Image();
 connectingImage.src = 'images/connecting.jpg'
@@ -57,8 +58,22 @@ function creategauge(canvasElement, title) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  var parameters = window.location.search;
+  var urlParams = new URLSearchParams(parameters);
+  var bluetoothAddress = urlParams.get('address')
 
-  client.connect({ onSuccess: onConnect })
+  if (bluetoothAddress == null) {
+    myTopic = "None"
+  }
+  else {
+    myTopic = "iGrillMon/" + bluetoothAddress.toUpperCase();
+    
+    console.debug("topic " + myTopic)
+    client.connect({ onSuccess: onConnect })
+  }
+
+  if (myTopic == "None") document.getElementById('getAddress').hidden = false;
+ 
   let counter = 0
 });
 
@@ -93,7 +108,7 @@ function gaugeDisconnected(name) {
   canvas.width = imageSize
   canvas.height = imageSize
   context = canvas.getContext('2d');
-  var startXPos = (canvas.width / 2) -  (imageSize / 2)
+  var startXPos = (canvas.width / 2) - (imageSize / 2)
   context.drawImage(disconnectedImage, startXPos, 0, 200, 200);
 }
 
@@ -102,7 +117,7 @@ function gaugeConnecting(name) {
   canvas.width = imageSize
   canvas.height = imageSize
   context = canvas.getContext('2d');
-  var startXPos = (canvas.width / 2) -  (imageSize / 2)
+  var startXPos = (canvas.width / 2) - (imageSize / 2)
   context.drawImage(disconnectedImage, startXPos, 0, 200, 200);
 }
 
@@ -113,7 +128,7 @@ function setLoadingImages() {
     canvas.width = imageSize
     canvas.height = imageSize
     context = canvas.getContext('2d');
-    var startXPos = (canvas.width / 2) -  (imageSize / 2)
+    var startXPos = (canvas.width / 2) - (imageSize / 2)
     context.drawImage(connectingImage, startXPos, 0, 200, 200);
   }
 }
@@ -164,3 +179,6 @@ function onConnectionLost(responseObject) {
   client.connect({ onSuccess: onConnect });
 }
 
+function OnAddressButtonClick() {
+  window.location.href = 'index.html?address=' + document.getElementById('address').value
+}
