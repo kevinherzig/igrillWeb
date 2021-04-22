@@ -30,20 +30,33 @@ function creategauge(canvasElement, title) {
     width: imageSize,
     height: imageSize,
     majorTicks: [50, 100, 150, 200, 250, 300, 350, 400],
-    borders: "true",
+    borders: "false",
     barStrokeWidth: "10",
+
     colorBarStroke: "#444",
+    colorMajorTicks: "#ffe66a",
+    colorMinorTicks: "#ffe66a",
+    colorTitle: "#eee",
+    colorUnits: "#ccc",
+    colorNumbers: "#eee",
+    colorPlate: "#2465c0",
+    colorPlateEnd: "#327ac0",
+    colorValueBoxShadow: "false",
+    colorPlate: "#444",
+    colorNeedle: "rgba(0,0,0,1)",
+
     value: "0",
     units: "°F",
-    colorValueBoxShadow: "false",
+
     tickSide: "left",
     numberSide: "left",
     needleSide: "left",
-    colorPlate: "transparent",
-    fontValueSize: "20",
+
+    fontValueSize: "50",
+    fontNumbersSize: "30",
     needleShadow: "true",
     needleType: "arrow",
-    colorNeedle: "rgba(0,0,0,1)",
+
     valueInt: "",
     valueDec: "0",
     title: title,
@@ -67,13 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   else {
     myTopic = "iGrillMon/" + bluetoothAddress.toUpperCase();
-    
+
     console.debug("topic " + myTopic)
     client.connect({ onSuccess: onConnect })
   }
 
   if (myTopic == "None") document.getElementById('getAddress').hidden = false;
- 
+
   let counter = 0
 });
 
