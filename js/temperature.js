@@ -31,7 +31,6 @@ function creategauge(canvasElement, title) {
     height: imageSize,
     majorTicks: [50, 100, 150, 200, 250, 300, 350, 400],
     borders: "false",
-    barStrokeWidth: "10",
 
     colorBarStroke: "#444",
     colorMajorTicks: "#ffe66a",
