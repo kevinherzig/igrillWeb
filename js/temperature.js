@@ -5,7 +5,7 @@ const client = new Paho.MQTT.Client("ws://broker.hivemq.com:8000/mqtt", "myClien
 
 
 const messageTTLSeconds = 10
-const imageSize = 200
+const imageSize = 300
 var messageTTL = messageTTLSeconds
 var MyTopic = ""
 
